@@ -1,6 +1,5 @@
 module PWscf
 
-using AbInitioSoftwareBase.Inputs: FormatConfig
 using Compat: eachrow
 using Crystallography: ReciprocalPoint, MonkhorstPackGrid
 using Formatting: sprintf1
@@ -16,7 +15,7 @@ using QuantumESPRESSOBase.Inputs.PWscf:
     KMeshCard,
     optionof
 
-export asstring
+import AbInitioSoftwareBase.Inputs: FormatConfig, asstring
 
 FormatConfig(
     ::Type{

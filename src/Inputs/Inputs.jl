@@ -1,10 +1,9 @@
 module Inputs
 
-import AbInitioSoftwareBase.Inputs: FormatConfig, Namelist, asstring
 using PyFortran90Namelists: fstring
 using QuantumESPRESSOBase.Inputs: QuantumESPRESSOInput
 
-export asstring
+import AbInitioSoftwareBase.Inputs: FormatConfig, Namelist, asstring
 
 FormatConfig(::Type{<:Union{QuantumESPRESSOInput,Namelist}}) = FormatConfig(;
     delimiter = " ",
