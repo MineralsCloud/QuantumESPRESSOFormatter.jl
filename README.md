@@ -6,4 +6,5 @@
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/MineralsCloud/QuantumESPRESSOFormatter.jl?svg=true)](https://ci.appveyor.com/project/singularitti/QuantumESPRESSOFormatter-jl)
 [![Build Status](https://cloud.drone.io/api/badges/MineralsCloud/QuantumESPRESSOFormatter.jl/status.svg)](https://cloud.drone.io/MineralsCloud/QuantumESPRESSOFormatter.jl)
 [![Build Status](https://api.cirrus-ci.com/github/MineralsCloud/QuantumESPRESSOFormatter.jl.svg)](https://cirrus-ci.com/github/MineralsCloud/QuantumESPRESSOFormatter.jl)
+[![pipeline status](https://gitlab.com/singularitti/QuantumESPRESSOFormatter.jl/badges/master/pipeline.svg)](https://gitlab.com/singularitti/QuantumESPRESSOFormatter.jl/-/pipelines)
 [![Coverage](https://codecov.io/gh/MineralsCloud/QuantumESPRESSOFormatter.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/MineralsCloud/QuantumESPRESSOFormatter.jl)
