@@ -1,5 +1,5 @@
 module QuantumESPRESSOFormatter
 
-# Write your package code here.
+include("Inputs/Inputs.jl")
 
 end
