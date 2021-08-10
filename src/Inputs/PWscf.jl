@@ -17,6 +17,8 @@ using QuantumESPRESSOBase.Inputs.PWscf:
 
 import AbInitioSoftwareBase.Inputs: FormatConfig, asstring
 
+export format_file, format_text
+
 FormatConfig(
     ::Type{
         <:Union{
@@ -158,5 +160,19 @@ function asstring(card::KMeshCard)
     content = "K_POINTS { $(optionof(card)) }" * config.newline
     return content * asstring(card.data)
 end
+
+function format_file(filename::AbstractString; overwrite::Bool = true, kwargs...)
+    text = read(filename, String)
+    formatted_text = format_text(text; kwargs...)
+    if overwrite
+        open(filename, "w") do io
+            write(io, formatted_text)
+        end
+    else
+        println(formatted_text)
+    end
+end
+
+format_text(text::AbstractString) = asstring(parse(PWInput, text))
 
 end
