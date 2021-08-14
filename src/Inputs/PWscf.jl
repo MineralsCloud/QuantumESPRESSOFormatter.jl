@@ -9,10 +9,12 @@ using QuantumESPRESSOBase.Inputs.PWscf:
     ReciprocalPoint,
     AtomicSpeciesCard,
     AtomicPositionsCard,
+    SpecialPointsCard,
     CellParametersCard,
     AtomicForce,
     GammaPointCard,
     KMeshCard,
+    PWInput,
     optionof
 
 import AbInitioSoftwareBase.Inputs: FormatConfig, asstring
