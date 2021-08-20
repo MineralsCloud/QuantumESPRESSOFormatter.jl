@@ -13,7 +13,6 @@ FormatConfig(::Type{<:Union{QuantumESPRESSOInput,Namelist}}) = FormatConfig(;
     int = "%i",
     bool = ".%.",
 )
-FormatConfig(x) = FormatConfig(typeof(x))
 
 """
     asstring(input::QuantumESPRESSOInput)
