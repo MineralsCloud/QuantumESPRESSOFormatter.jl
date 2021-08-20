@@ -2,7 +2,9 @@ module PWscf
 
 using AbInitioSoftwareBase.Inputs: asstring
 using StructArrays: StructArray
+using Test
 using QuantumESPRESSOBase.Inputs.PWscf
+using QuantumESPRESSOFormatter
 
 @testset "Test constructing `AtomicSpeciesCard`" begin
     a = ["Al", "As"]
