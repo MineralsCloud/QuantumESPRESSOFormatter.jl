@@ -22,8 +22,11 @@ Return a `String` representing a `QuantumESPRESSOInput`, valid for Quantum ESPRE
 """
 function asstring(input::QuantumESPRESSOInput)
     newline = FormatConfig(input).newline
-    return join(map(_asstring, getfield(input, i) for i in 1:nfields(input)), newline) *
-           newline  # Add a new line at the end of line to prevent errors
+    iter = Iterators.map(1:nfields(input)) do i
+        x = getfield(input, i)
+        x === nothing ? "" : asstring(x)
+    end
+    return join(iter, newline) * newline  # Add a new line at the end of line to prevent errors
 end
 """
     asstring(nml::Namelist)
@@ -54,8 +57,6 @@ function asstring(nml::Namelist)
     content = join(iter, newline)
     return join(filter(!isempty, ("&" * groupname(nml), content, '/')), newline)
 end
-_asstring(::Nothing) = ""
-_asstring(x) = asstring(x)
 
 include("PWscf.jl")
 
