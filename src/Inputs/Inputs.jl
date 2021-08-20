@@ -1,5 +1,6 @@
 module Inputs
 
+using Compat
 using PyFortran90Namelists: fstring
 using QuantumESPRESSOBase.Inputs: QuantumESPRESSOInput, dropdefault, groupname
 
@@ -33,23 +34,23 @@ function asstring(nml::Namelist)
     dict = dropdefault(nml)
     config = FormatConfig(nml)
     indent, delimiter, newline = config.indent, config.delimiter, config.newline
-    iter = (
+    iter = Iterators.map(dict) do (key, value)
         if value isa AbstractVector
-            data = (
-                indent * join((string(key, '(', i, ')'), "=", fstring(x)), delimiter) for
-                (i, x) in enumerate(value) if !isnothing(x)
-            )
+            data = Iterators.map(enumerate(value)) do (i, x)
+                if x !== nothing
+                    indent * join((string(key, '(', i, ')'), "=", fstring(x)), delimiter)
+                end
+            end
             join(data, newline)
         elseif value isa NamedTuple
-            data = (
-                indent * join((string(key, '%', x), "=", fstring(y)), delimiter) for
-                (x, y) in value
-            )
+            data = Iterators.map(value) do (x, y)
+                indent * join((string(key, '%', x), "=", fstring(y)), delimiter)
+            end
             join(data, newline)
         else
             indent * join((string(key), "=", fstring(value)), delimiter)
-        end for (key, value) in dict
-    )
+        end
+    end
     content = join(iter, newline)
     return join(filter(!isempty, ("&" * groupname(nml), content, '/')), newline)
 end
