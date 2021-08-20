@@ -1,7 +1,7 @@
 module Inputs
 
 using PyFortran90Namelists: fstring
-using QuantumESPRESSOBase.Inputs: QuantumESPRESSOInput
+using QuantumESPRESSOBase.Inputs: QuantumESPRESSOInput, dropdefault
 
 import AbInitioSoftwareBase.Inputs: FormatConfig, Namelist, asstring
 
