@@ -5,7 +5,7 @@ using QuantumESPRESSOBase.Inputs: QuantumESPRESSOInput, dropdefault, groupname
 
 import AbInitioSoftwareBase.Inputs: FormatConfig, Namelist, asstring
 
-FormatConfig(::Type{<:Union{QuantumESPRESSOInput,Namelist}}) = FormatConfig(;
+FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
     delimiter = " ",
     newline = "\n",
     indent = ' '^4,
