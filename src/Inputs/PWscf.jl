@@ -9,9 +9,9 @@ using QuantumESPRESSOBase.Inputs.PWscf:
     ReciprocalPoint,
     AtomicSpeciesCard,
     AtomicPositionsCard,
-    SpecialPointsCard,
     CellParametersCard,
     AtomicForce,
+    SpecialPointsCard,
     GammaPointCard,
     KMeshCard,
     PWInput,
@@ -22,17 +22,18 @@ import AbInitioSoftwareBase.Inputs: FormatConfig, asstring
 export format_file, format_text
 
 FormatConfig(
-    ::Type{
-        <:Union{
-            AtomicSpecies,
-            AtomicPosition,
-            ReciprocalPoint,
-            AtomicSpeciesCard,
-            AtomicPositionsCard,
-            CellParametersCard,
-            MonkhorstPackGrid,
-            AtomicForce,
-        },
+    ::Union{
+        AtomicSpecies,
+        AtomicPosition,
+        ReciprocalPoint,
+        AtomicSpeciesCard,
+        AtomicPositionsCard,
+        CellParametersCard,
+        MonkhorstPackGrid,
+        AtomicForce,
+        SpecialPointsCard,
+        GammaPointCard,
+        KMeshCard,
     },
 ) = FormatConfig(;
     delimiter = " ",
