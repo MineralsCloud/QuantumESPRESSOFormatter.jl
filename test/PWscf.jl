@@ -12,7 +12,7 @@ using QuantumESPRESSOFormatter
     pp = ["Al.pbe-n-kjpaw_psl.1.0.0.UPF", "As.pbe-n-kjpaw_psl.1.0.0.UPF"]
     card = AtomicSpeciesCard(StructArray{AtomicSpecies}((a, m, pp)))
     @test asstring(card) ==
-          "ATOMIC_SPECIES\n      Al 24590.765593049 Al.pbe-n-kjpaw_psl.1.0.0.UPF\n      As 68285.402454827 As.pbe-n-kjpaw_psl.1.0.0.UPF\n      Si 25591.192491355 Si.pbe-n-kjpaw_psl.1.0.0.UPF"
+          "ATOMIC_SPECIES\n      Al 24590.765593049 Al.pbe-n-kjpaw_psl.1.0.0.UPF\n      As 68285.402454827 As.pbe-n-kjpaw_psl.1.0.0.UPF"
 end
 
 @testset "Test constructing `AtomicPositionsCard`" begin
