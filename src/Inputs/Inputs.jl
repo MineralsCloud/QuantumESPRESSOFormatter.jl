@@ -30,33 +30,28 @@ end
 Return a `String` representing a `Namelist`, valid for Quantum ESPRESSO's input.
 """
 function asstring(nml::Namelist)
-    config = FormatConfig(nml)
     dict = dropdefault(nml)
-    content = join((_asstring(key, value) for (key, value) in dict), config.newline)
-    return join(filter(!isempty, ("&" * groupname(nml), content, '/')), config.newline)
-end
-function _asstring(key, value::AbstractVector)
-    config = FormatConfig(Namelist)
+    config = FormatConfig(nml)
     indent, delimiter, newline = config.indent, config.delimiter, config.newline
     iter = (
-        indent * join((string(key, '(', i, ')'), "=", fstring(x)), delimiter) for
-        (i, x) in enumerate(value) if !isnothing(x)
+        if value isa AbstractVector
+            data = (
+                indent * join((string(key, '(', i, ')'), "=", fstring(x)), delimiter) for
+                (i, x) in enumerate(value) if !isnothing(x)
+            )
+            join(data, newline)
+        elseif value isa NamedTuple
+            data = (
+                indent * join((string(key, '%', x), "=", fstring(y)), delimiter) for
+                (x, y) in value
+            )
+            join(data, newline)
+        else
+            indent * join((string(key), "=", fstring(value)), delimiter)
+        end for (key, value) in dict
     )
-    return join(iter, newline)
-end
-function _asstring(key, value::NamedTuple)
-    config = FormatConfig(Namelist)
-    indent, delimiter, newline = config.indent, config.delimiter, config.newline
-    iter = (
-        indent * join((string(key, '%', x), "=", fstring(y)), delimiter) for
-        (x, y) in value
-    )
-    return join(iter, newline)
-end
-function _asstring(key, value)
-    config = FormatConfig(Namelist)
-    indent, delimiter = config.indent, config.delimiter
-    return indent * join((string(key), "=", fstring(value)), delimiter)
+    content = join(iter, newline)
+    return join(filter(!isempty, ("&" * groupname(nml), content, '/')), newline)
 end
 _asstring(::Nothing) = ""
 _asstring(x) = asstring(x)
