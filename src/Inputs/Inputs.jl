@@ -57,6 +57,7 @@ function asstring(nml::Namelist)
     content = join(iter, newline)
     return join(filter(!isempty, ("&" * groupname(nml), content, '/')), newline)
 end
+asstring(str::AbstractString) = str
 
 include("PWscf.jl")
 
