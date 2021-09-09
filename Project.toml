@@ -22,7 +22,7 @@ julia = "1"
 Compat = "3.14"
 QuantumESPRESSOBase = "0.1, 0.2, 0.3"
 PyFortran90Namelists = "0.1"
-AbInitioSoftwareBase = "0.2, 0.3, 0.4, 0.5"
+AbInitioSoftwareBase = "0.2, 0.3, 0.4, 0.5, 0.6"
 Crystallography = "0.2, 0.3"
 Formatting = "0.3.3, 0.4"
 
