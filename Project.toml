@@ -1,30 +1,30 @@
 name = "QuantumESPRESSOFormatter"
 uuid = "a4e7ca57-d8d8-4f74-9c0b-0b18081c205e"
 authors = ["Qi Zhang <singularitti@outlook.com>"]
-version = "0.2.5-DEV"
+version = "0.2.5"
 
 [deps]
-AbInitioSoftwareBase = "df5135bc-470e-46c6-b451-292e27ca5b84"
+QuantumESPRESSOParser = "a780ab42-b33a-11e9-16c1-a92d75b2a626"
 Compat = "34da2185-b29b-5c13-b0c7-acf172513d20"
+QuantumESPRESSOBase = "51b62caa-b28f-11e9-38c2-1f67cb498e05"
+PyFortran90Namelists = "e44308e6-bd5b-11e9-2850-49daf8f1ec40"
+AbInitioSoftwareBase = "df5135bc-470e-46c6-b451-292e27ca5b84"
 Crystallography = "3bff3928-7a76-11e9-2089-d112443085a5"
 Formatting = "59287772-0a20-5a39-b81b-1366585eb4c0"
-PyFortran90Namelists = "e44308e6-bd5b-11e9-2850-49daf8f1ec40"
-QuantumESPRESSOBase = "51b62caa-b28f-11e9-38c2-1f67cb498e05"
-QuantumESPRESSOParser = "a780ab42-b33a-11e9-16c1-a92d75b2a626"
-
-[compat]
-AbInitioSoftwareBase = "0.2, 0.3, 0.4, 0.5, 0.6"
-Compat = "3.14"
-Crystallography = "0.2, 0.3"
-Formatting = "0.3.3, 0.4"
-PyFortran90Namelists = "0.1"
-QuantumESPRESSOBase = "0.1, 0.2, 0.3, 0.4"
-QuantumESPRESSOParser = "0.1, 0.2, 0.3"
-julia = "1"
 
 [extras]
-StructArrays = "09ab397b-f2b6-538f-b94a-2f83cf4a842a"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+StructArrays = "09ab397b-f2b6-538f-b94a-2f83cf4a842a"
+
+[compat]
+QuantumESPRESSOParser = "0.1, 0.2, 0.3"
+julia = "1"
+Compat = "3.14"
+QuantumESPRESSOBase = "0.1, 0.2, 0.3, 0.4"
+PyFortran90Namelists = "0.1"
+AbInitioSoftwareBase = "0.2, 0.3, 0.4, 0.5, 0.6"
+Crystallography = "0.2, 0.3"
+Formatting = "0.3.3, 0.4"
 
 [targets]
 test = ["Test", "StructArrays"]
