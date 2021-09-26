@@ -44,7 +44,7 @@ function asstring(nml::Namelist)
                     indent * join((string(key, '(', i, ')'), "=", fstring(x)), delimiter)
                 end
             end
-            join(data, newline)
+            join(Iterators.filter(!isnothing, data), newline)
         elseif value isa NamedTuple
             data = Iterators.map(value) do (x, y)
                 indent * join((string(key, '%', x), "=", fstring(y)), delimiter)
