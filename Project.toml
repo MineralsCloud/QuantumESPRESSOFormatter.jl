@@ -1,7 +1,7 @@
 name = "QuantumESPRESSOFormatter"
 uuid = "a4e7ca57-d8d8-4f74-9c0b-0b18081c205e"
 authors = ["Qi Zhang <singularitti@outlook.com>"]
-version = "0.2.6-DEV"
+version = "0.2.6"
 
 [deps]
 QuantumESPRESSOParser = "a780ab42-b33a-11e9-16c1-a92d75b2a626"
