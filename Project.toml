@@ -18,7 +18,7 @@ Compat = "3.14"
 Crystallography = "0.2, 0.3"
 Formatting = "0.3.3, 0.4"
 PyFortran90Namelists = "0.1"
-QuantumESPRESSOBase = "0.1, 0.2, 0.3, 0.4"
+QuantumESPRESSOBase = "0.1, 0.2, 0.3, 0.4, 0.5"
 QuantumESPRESSOParser = "0.1, 0.2, 0.3"
 julia = "1"
 
