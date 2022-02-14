@@ -34,7 +34,7 @@ end
 
 Return a `String` representing a `Namelist`, valid for Quantum ESPRESSO's input.
 """
-function asstring(nml::Namelist)
+function Base.print(io::IO, nml::Namelist)
     dict = dropdefault(nml)
     config = FormatConfig(nml)
     indent, delimiter, newline = config.indent, config.delimiter, config.newline
@@ -56,7 +56,8 @@ function asstring(nml::Namelist)
         end
     end
     content = join(iter, newline)
-    return join(filter(!isempty, ("&" * groupname(nml), content, '/')), newline)
+    print(io, join(filter(!isempty, ("&" * groupname(nml), content, '/')), newline))
+    return nothing
 end
 asstring(str::AbstractString) = str
 
