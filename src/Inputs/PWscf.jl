@@ -69,10 +69,11 @@ end
 
 Return a `String` representing a `AtomicSpeciesCard`, valid for Quantum ESPRESSO's input.
 """
-function asstring(card::AtomicSpeciesCard)
+function Base.print(io::IO, card::AtomicSpeciesCard)
     config = FormatConfig(card)
     data = union(card.data)
-    return join(("ATOMIC_SPECIES", map(asstring, data)...), config.newline)
+    print(io, join(("ATOMIC_SPECIES", map(string, data)...), config.newline))
+    return nothing
 end
 """
     asstring(data::AtomicPosition)
