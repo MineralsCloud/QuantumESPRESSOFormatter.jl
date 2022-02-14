@@ -80,7 +80,7 @@ end
 
 Return a `String` representing a `AtomicPosition`, valid for Quantum ESPRESSO's input.
 """
-function asstring(data::AtomicPosition)
+function Base.print(io::IO, data::AtomicPosition)
     config = FormatConfig(data)
     content = join(
         (
@@ -91,10 +91,11 @@ function asstring(data::AtomicPosition)
         config.delimiter,
     )
     if !all(data.if_pos)
-        return join((content, map(Int, data.if_pos)...), config.delimiter)
+        print(io, join((content, map(Int, data.if_pos)...), config.delimiter))
     else
-        return content
+        print(io, content)
     end
+    return nothing
 end
 """
     asstring(card::AtomicPositionsCard)
