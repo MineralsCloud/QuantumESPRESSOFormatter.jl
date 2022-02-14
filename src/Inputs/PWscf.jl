@@ -145,12 +145,13 @@ end
 
 Return a `String` representing a `SpecialKPoint`, valid for Quantum ESPRESSO's input.
 """
-function asstring(data::ReciprocalPoint)
+function Base.print(io::IO, data::ReciprocalPoint)
     config = FormatConfig(data)
-    return config.indent * join(
+    print(io, config.indent * join(
         map(x -> sprintf1(config.float, x), [data.coord..., data.weight]),
         config.delimiter,
-    )
+    ))
+    return nothing
 end
 """
     asstring(card::KPointsCard)
