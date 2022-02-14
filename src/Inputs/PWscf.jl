@@ -115,9 +115,9 @@ end
 
 Return a `String` representing a `CellParametersCard`, valid for Quantum ESPRESSO's input.
 """
-function asstring(card::CellParametersCard)
+function Base.print(io::IO, card::CellParametersCard)
     config = FormatConfig(card)
-    return join(
+    print(io, join(
         (
             "CELL_PARAMETERS { $(optionof(card)) }",
             map(eachrow(card.data)) do row
@@ -125,7 +125,8 @@ function asstring(card::CellParametersCard)
             end...,
         ),
         config.newline,
-    )
+    ))
+    return nothing
 end
 """
     asstring(data::MonkhorstPackGrid)
