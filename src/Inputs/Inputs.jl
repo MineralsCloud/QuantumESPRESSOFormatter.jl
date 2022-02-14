@@ -15,11 +15,6 @@ FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
     bool = ".%."
 )
 
-"""
-    asstring(input::QuantumESPRESSOInput)
-
-Return a `String` representing a `QuantumESPRESSOInput`, valid for Quantum ESPRESSO's input.
-"""
 function Base.print(io::IO, input::QuantumESPRESSOInput)
     newline = FormatConfig(input).newline
     iter = Iterators.map(1:nfields(input)) do i
@@ -29,11 +24,6 @@ function Base.print(io::IO, input::QuantumESPRESSOInput)
     println(io, join(iter, newline) * newline)  # Add a new line at the end of line to prevent errors
     return nothing
 end
-"""
-    asstring(nml::Namelist)
-
-Return a `String` representing a `Namelist`, valid for Quantum ESPRESSO's input.
-"""
 function Base.print(io::IO, nml::Namelist)
     dict = dropdefault(nml)
     config = FormatConfig(nml)

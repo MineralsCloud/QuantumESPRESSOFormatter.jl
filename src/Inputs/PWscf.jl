@@ -44,11 +44,6 @@ FormatConfig(
     bool = ".%."
 )
 
-"""
-    asstring(data::AtomicSpecies)
-
-Return a `String` representing a `AtomicSpecies`, valid for Quantum ESPRESSO's input.
-"""
 function Base.print(io::IO, data::AtomicSpecies)
     config = FormatConfig(data)
     print(io,
@@ -64,22 +59,12 @@ function Base.print(io::IO, data::AtomicSpecies)
     )
     return nothing
 end
-"""
-    asstring(card::AtomicSpeciesCard)
-
-Return a `String` representing a `AtomicSpeciesCard`, valid for Quantum ESPRESSO's input.
-"""
 function Base.print(io::IO, card::AtomicSpeciesCard)
     config = FormatConfig(card)
     data = union(card.data)
     print(io, join(("ATOMIC_SPECIES", map(string, data)...), config.newline))
     return nothing
 end
-"""
-    asstring(data::AtomicPosition)
-
-Return a `String` representing a `AtomicPosition`, valid for Quantum ESPRESSO's input.
-"""
 function Base.print(io::IO, data::AtomicPosition)
     config = FormatConfig(data)
     content = join(
@@ -97,11 +82,6 @@ function Base.print(io::IO, data::AtomicPosition)
     end
     return nothing
 end
-"""
-    asstring(card::AtomicPositionsCard)
-
-Return a `String` representing a `AtomicPositionsCard`, valid for Quantum ESPRESSO's input.
-"""
 function Base.print(io::IO, card::AtomicPositionsCard)
     config = FormatConfig(card)
     print(io, join(
@@ -110,11 +90,6 @@ function Base.print(io::IO, card::AtomicPositionsCard)
     ))
     return nothing
 end
-"""
-    asstring(card::CellParametersCard)
-
-Return a `String` representing a `CellParametersCard`, valid for Quantum ESPRESSO's input.
-"""
 function Base.print(io::IO, card::CellParametersCard)
     config = FormatConfig(card)
     print(io, join(
@@ -128,11 +103,6 @@ function Base.print(io::IO, card::CellParametersCard)
     ))
     return nothing
 end
-"""
-    asstring(data::MonkhorstPackGrid)
-
-Return a `String` representing a `MonkhorstPackGrid`, valid for Quantum ESPRESSO's input.
-"""
 function Base.print(io::IO, data::MonkhorstPackGrid)
     config = FormatConfig(data)
     print(io, config.indent * join(map([data.mesh; data.is_shift]) do x
@@ -140,11 +110,6 @@ function Base.print(io::IO, data::MonkhorstPackGrid)
         end, config.delimiter))
     return nothing
 end
-"""
-    asstring(data::SpecialKPoint)
-
-Return a `String` representing a `SpecialKPoint`, valid for Quantum ESPRESSO's input.
-"""
 function Base.print(io::IO, data::ReciprocalPoint)
     config = FormatConfig(data)
     print(io, config.indent * join(
@@ -153,11 +118,6 @@ function Base.print(io::IO, data::ReciprocalPoint)
     ))
     return nothing
 end
-"""
-    asstring(card::KPointsCard)
-
-Return a `String` representing a `KPointsCard`, valid for Quantum ESPRESSO's input.
-"""
 function Base.print(io::IO, card::SpecialPointsCard)
     config = FormatConfig(card)
     content = "K_POINTS { $(optionof(card)) }" * config.newline
