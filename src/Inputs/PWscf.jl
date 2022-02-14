@@ -133,11 +133,12 @@ end
 
 Return a `String` representing a `MonkhorstPackGrid`, valid for Quantum ESPRESSO's input.
 """
-function asstring(data::MonkhorstPackGrid)
+function Base.print(io::IO, data::MonkhorstPackGrid)
     config = FormatConfig(data)
-    return config.indent * join(map([data.mesh; data.is_shift]) do x
-        sprintf1(config.int, x)
-    end, config.delimiter)
+    print(io, config.indent * join(map([data.mesh; data.is_shift]) do x
+            sprintf1(config.int, x)
+        end, config.delimiter))
+    return nothing
 end
 """
     asstring(data::SpecialKPoint)
