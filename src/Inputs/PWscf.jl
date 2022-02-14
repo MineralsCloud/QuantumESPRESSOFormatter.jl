@@ -17,7 +17,7 @@ using QuantumESPRESSOBase.Inputs.PWscf:
     PWInput,
     optionof
 
-import AbInitioSoftwareBase.Inputs: FormatConfig, asstring
+import AbInitioSoftwareBase.Inputs: FormatConfig
 
 export format_file, format_text
 

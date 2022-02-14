@@ -4,7 +4,7 @@ using Compat
 using PyFortran90Namelists: fstring
 using QuantumESPRESSOBase.Inputs: QuantumESPRESSOInput, dropdefault, groupname
 
-import AbInitioSoftwareBase.Inputs: FormatConfig, Namelist, asstring
+import AbInitioSoftwareBase.Inputs: FormatConfig, Namelist
 
 FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
     delimiter = " ",
