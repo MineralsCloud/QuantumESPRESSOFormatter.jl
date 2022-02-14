@@ -12,7 +12,7 @@ FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
     indent = ' '^4,
     float = "%f",
     int = "%i",
-    bool = ".%.",
+    bool = ".%."
 )
 
 """
@@ -20,20 +20,21 @@ FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
 
 Return a `String` representing a `QuantumESPRESSOInput`, valid for Quantum ESPRESSO's input.
 """
-function asstring(input::QuantumESPRESSOInput)
+function Base.print(io::IO, input::QuantumESPRESSOInput)
     newline = FormatConfig(input).newline
     iter = Iterators.map(1:nfields(input)) do i
         x = getfield(input, i)
-        x === nothing ? "" : asstring(x)
+        x === nothing ? "" : string(x)
     end
-    return join(iter, newline) * newline  # Add a new line at the end of line to prevent errors
+    println(io, join(iter, newline) * newline)  # Add a new line at the end of line to prevent errors
+    return nothing
 end
 """
     asstring(nml::Namelist)
 
 Return a `String` representing a `Namelist`, valid for Quantum ESPRESSO's input.
 """
-function asstring(nml::Namelist)
+function Base.print(io::IO, nml::Namelist)
     dict = dropdefault(nml)
     config = FormatConfig(nml)
     indent, delimiter, newline = config.indent, config.delimiter, config.newline
@@ -55,9 +56,9 @@ function asstring(nml::Namelist)
         end
     end
     content = join(iter, newline)
-    return join(filter(!isempty, ("&" * groupname(nml), content, '/')), newline)
+    print(io, join(filter(!isempty, ("&" * groupname(nml), content, '/')), newline))
+    return nothing
 end
-asstring(str::AbstractString) = str
 
 include("PWscf.jl")
 
