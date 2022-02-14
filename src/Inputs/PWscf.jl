@@ -188,6 +188,6 @@ function format_file(filename::AbstractString; overwrite::Bool = true, kwargs...
     end
 end
 
-format_text(text::AbstractString) = asstring(parse(PWInput, text))
+format_text(text::AbstractString) = string(parse(PWInput, text))
 
 end
