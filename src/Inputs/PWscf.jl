@@ -41,7 +41,7 @@ FormatConfig(
     indent = ' '^4,
     float = "%14.9f",
     int = "%5d",
-    bool = ".%.",
+    bool = ".%."
 )
 
 """
