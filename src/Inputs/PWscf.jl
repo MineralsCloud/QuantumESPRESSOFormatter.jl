@@ -49,17 +49,20 @@ FormatConfig(
 
 Return a `String` representing a `AtomicSpecies`, valid for Quantum ESPRESSO's input.
 """
-function asstring(data::AtomicSpecies)
+function Base.print(io::IO, data::AtomicSpecies)
     config = FormatConfig(data)
-    return join(
-        (
-            config.indent,
-            sprintf1("%3s", data.atom),
-            sprintf1(config.float, data.mass),
-            data.pseudopot,
-        ),
-        config.delimiter,
+    print(io,
+        join(
+            (
+                config.indent,
+                sprintf1("%3s", data.atom),
+                sprintf1(config.float, data.mass),
+                data.pseudopot,
+            ),
+            config.delimiter,
+        )
     )
+    return nothing
 end
 """
     asstring(card::AtomicSpeciesCard)
