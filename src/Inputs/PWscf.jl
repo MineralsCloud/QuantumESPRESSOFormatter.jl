@@ -169,10 +169,11 @@ function Base.print(io::IO, card::GammaPointCard)
     print(io, "K_POINTS { $(optionof(card)) }" * config.newline)
     return nothing
 end
-function asstring(card::KMeshCard)
+function Base.print(io::IO, card::KMeshCard)
     config = FormatConfig(card)
     content = "K_POINTS { $(optionof(card)) }" * config.newline
-    return content * asstring(card.data)
+    print(io, content * string(card.data))
+    return nothing
 end
 
 function format_file(filename::AbstractString; overwrite::Bool = true, kwargs...)
