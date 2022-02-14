@@ -164,9 +164,10 @@ function Base.print(io::IO, card::SpecialPointsCard)
     print(io, join((content, length(card.data), map(string, card.data)...), config.newline))
     return nothing
 end
-function asstring(card::GammaPointCard)
+function Base.print(io::IO, card::GammaPointCard)
     config = FormatConfig(card)
-    return "K_POINTS { $(optionof(card)) }" * config.newline
+    print(io, "K_POINTS { $(optionof(card)) }" * config.newline)
+    return nothing
 end
 function asstring(card::KMeshCard)
     config = FormatConfig(card)
