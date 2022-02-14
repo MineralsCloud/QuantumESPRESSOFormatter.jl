@@ -20,13 +20,14 @@ FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
 
 Return a `String` representing a `QuantumESPRESSOInput`, valid for Quantum ESPRESSO's input.
 """
-function asstring(input::QuantumESPRESSOInput)
+function Base.print(io::IO, input::QuantumESPRESSOInput)
     newline = FormatConfig(input).newline
     iter = Iterators.map(1:nfields(input)) do i
         x = getfield(input, i)
-        x === nothing ? "" : asstring(x)
+        x === nothing ? "" : string(x)
     end
-    return join(iter, newline) * newline  # Add a new line at the end of line to prevent errors
+    println(io, join(iter, newline) * newline)  # Add a new line at the end of line to prevent errors
+    return nothing
 end
 """
     asstring(nml::Namelist)
