@@ -12,7 +12,7 @@ FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
     indent = ' '^4,
     float = "%f",
     int = "%i",
-    bool = ".%.",
+    bool = ".%."
 )
 
 """
