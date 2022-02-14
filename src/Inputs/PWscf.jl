@@ -102,12 +102,13 @@ end
 
 Return a `String` representing a `AtomicPositionsCard`, valid for Quantum ESPRESSO's input.
 """
-function asstring(card::AtomicPositionsCard)
+function Base.print(io::IO, card::AtomicPositionsCard)
     config = FormatConfig(card)
-    join(
-        ("ATOMIC_POSITIONS { $(optionof(card)) }", map(asstring, card.data)...),
+    print(io, join(
+        ("ATOMIC_POSITIONS { $(optionof(card)) }", map(string, card.data)...),
         config.newline,
-    )
+    ))
+    return nothing
 end
 """
     asstring(card::CellParametersCard)
