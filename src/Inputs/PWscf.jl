@@ -158,10 +158,11 @@ end
 
 Return a `String` representing a `KPointsCard`, valid for Quantum ESPRESSO's input.
 """
-function asstring(card::SpecialPointsCard)
+function Base.print(io::IO, card::SpecialPointsCard)
     config = FormatConfig(card)
     content = "K_POINTS { $(optionof(card)) }" * config.newline
-    return join((content, length(card.data), map(asstring, card.data)...), config.newline)
+    print(io, join((content, length(card.data), map(string, card.data)...), config.newline))
+    return nothing
 end
 function asstring(card::GammaPointCard)
     config = FormatConfig(card)
