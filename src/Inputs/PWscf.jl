@@ -16,6 +16,7 @@ using QuantumESPRESSOBase.Inputs.PWscf:
     KMeshCard,
     PWInput,
     optionof
+using QuantumESPRESSOParser.Inputs.PWscf
 
 import AbInitioSoftwareBase.Inputs: FormatConfig
 
