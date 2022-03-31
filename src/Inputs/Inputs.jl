@@ -1,6 +1,7 @@
 module Inputs
 
 using Compat
+using IterTools: imap
 using PyFortran90Namelists: fstring
 using QuantumESPRESSOBase.Inputs: QuantumESPRESSOInput, dropdefault, groupname
 
@@ -28,7 +29,7 @@ function Base.print(io::IO, nml::Namelist)
     dict = dropdefault(nml)
     config = FormatConfig(nml)
     indent, delimiter, newline = config.indent, config.delimiter, config.newline
-    iter = Iterators.map(dict) do (key, value)
+    iter = imap(dict) do (key, value)
         if value isa AbstractVector
             data = Iterators.map(enumerate(value)) do (i, x)
                 if x !== nothing
