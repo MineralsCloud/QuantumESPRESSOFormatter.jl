@@ -7,3 +7,6 @@
 [![Build Status](https://api.cirrus-ci.com/github/MineralsCloud/QuantumESPRESSOFormatter.jl.svg)](https://cirrus-ci.com/github/MineralsCloud/QuantumESPRESSOFormatter.jl)
 [![pipeline status](https://gitlab.com/singularitti/QuantumESPRESSOFormatter.jl/badges/master/pipeline.svg)](https://gitlab.com/singularitti/QuantumESPRESSOFormatter.jl/-/pipelines)
 [![Coverage](https://codecov.io/gh/MineralsCloud/QuantumESPRESSOFormatter.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/MineralsCloud/QuantumESPRESSOFormatter.jl)
+
+Format the input files of [Quantum ESPRESSO](https://www.quantum-espresso.org/) to a more
+readable way.
