@@ -18,7 +18,7 @@ FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
 
 function Base.print(io::IO, input::QuantumESPRESSOInput)
     newline = FormatConfig(input).newline
-    iter = Iterators.map(1:nfields(input)) do i
+    iter = imap(1:nfields(input)) do i
         x = getfield(input, i)
         x === nothing ? "" : string(x)
     end
@@ -31,14 +31,14 @@ function Base.print(io::IO, nml::Namelist)
     indent, delimiter, newline = config.indent, config.delimiter, config.newline
     iter = imap(dict) do (key, value)
         if value isa AbstractVector
-            data = Iterators.map(enumerate(value)) do (i, x)
+            data = imap(enumerate(value)) do (i, x)
                 if x !== nothing
                     indent * join((string(key, '(', i, ')'), "=", fstring(x)), delimiter)
                 end
             end
             join(Iterators.filter(!isnothing, data), newline)
         elseif value isa NamedTuple
-            data = Iterators.map(value) do (x, y)
+            data = imap(value) do (x, y)
                 indent * join((string(key, '%', x), "=", fstring(y)), delimiter)
             end
             join(data, newline)
