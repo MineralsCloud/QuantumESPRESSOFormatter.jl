@@ -1,6 +1,5 @@
 module Inputs
 
-using Compat
 using IterTools: imap
 using PyFortran90Namelists: fstring
 using QuantumESPRESSOBase.Inputs: QuantumESPRESSOInput, dropdefault, groupname
