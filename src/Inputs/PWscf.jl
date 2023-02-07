@@ -1,6 +1,5 @@
 module PWscf
 
-using Compat: eachrow
 using Crystallography: ReciprocalPoint, MonkhorstPackGrid
 using Formatting: sprintf1
 using QuantumESPRESSOBase.Inputs.PWscf:
