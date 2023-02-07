@@ -37,17 +37,13 @@ FormatConfig(
         KMeshCard,
     },
 ) = FormatConfig(;
-    delimiter = " ",
-    newline = "\n",
-    indent = ' '^4,
-    float = "%14.9f",
-    int = "%5d",
-    bool = ".%."
+    delimiter=" ", newline="\n", indent=' '^4, float="%14.9f", int="%5d", bool=".%."
 )
 
 function Base.print(io::IO, data::AtomicSpecies)
     config = FormatConfig(data)
-    print(io,
+    print(
+        io,
         join(
             (
                 config.indent,
@@ -56,7 +52,7 @@ function Base.print(io::IO, data::AtomicSpecies)
                 data.pseudopot,
             ),
             config.delimiter,
-        )
+        ),
     )
     return nothing
 end
@@ -85,38 +81,50 @@ function Base.print(io::IO, data::AtomicPosition)
 end
 function Base.print(io::IO, card::AtomicPositionsCard)
     config = FormatConfig(card)
-    print(io, join(
-        ("ATOMIC_POSITIONS { $(optionof(card)) }", map(string, card.data)...),
-        config.newline,
-    ))
+    print(
+        io,
+        join(
+            ("ATOMIC_POSITIONS { $(optionof(card)) }", map(string, card.data)...),
+            config.newline,
+        ),
+    )
     return nothing
 end
 function Base.print(io::IO, card::CellParametersCard)
     config = FormatConfig(card)
-    print(io, join(
-        (
-            "CELL_PARAMETERS { $(optionof(card)) }",
-            map(eachrow(card.data)) do row
-                join((sprintf1(config.float, x) for x in row))
-            end...,
+    print(
+        io,
+        join(
+            (
+                "CELL_PARAMETERS { $(optionof(card)) }",
+                map(eachrow(card.data)) do row
+                    join((sprintf1(config.float, x) for x in row))
+                end...,
+            ),
+            config.newline,
         ),
-        config.newline,
-    ))
+    )
     return nothing
 end
 function Base.print(io::IO, data::MonkhorstPackGrid)
     config = FormatConfig(data)
-    print(io, config.indent * join(map([data.mesh; data.is_shift]) do x
+    print(io, config.indent * join(
+        map([data.mesh; data.is_shift]) do x
             sprintf1(config.int, x)
-        end, config.delimiter))
+        end,
+        config.delimiter,
+    ))
     return nothing
 end
 function Base.print(io::IO, data::ReciprocalPoint)
     config = FormatConfig(data)
-    print(io, config.indent * join(
-        map(x -> sprintf1(config.float, x), [data.coord..., data.weight]),
-        config.delimiter,
-    ))
+    print(
+        io,
+        config.indent * join(
+            map(x -> sprintf1(config.float, x), [data.coord..., data.weight]),
+            config.delimiter,
+        ),
+    )
     return nothing
 end
 function Base.print(io::IO, card::SpecialPointsCard)
@@ -137,7 +145,7 @@ function Base.print(io::IO, card::KMeshCard)
     return nothing
 end
 
-function format_file(filename::AbstractString; overwrite::Bool = true, kwargs...)
+function format_file(filename::AbstractString; overwrite::Bool=true, kwargs...)
     text = read(filename, String)
     formatted_text = format_text(text; kwargs...)
     if overwrite

@@ -8,12 +8,7 @@ using QuantumESPRESSOBase.Inputs: QuantumESPRESSOInput, dropdefault, groupname
 import AbInitioSoftwareBase.Inputs: FormatConfig, Namelist
 
 FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
-    delimiter = " ",
-    newline = "\n",
-    indent = ' '^4,
-    float = "%f",
-    int = "%i",
-    bool = ".%."
+    delimiter=" ", newline="\n", indent=' '^4, float="%f", int="%i", bool=".%."
 )
 
 function Base.print(io::IO, input::QuantumESPRESSOInput)
