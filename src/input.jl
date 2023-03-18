@@ -42,5 +42,3 @@ function Base.print(io::IO, nml::Namelist)
     print(io, join(filter(!isempty, ("&" * groupname(nml), content, '/')), newline))
     return nothing
 end
-
-include("PWscf.jl")

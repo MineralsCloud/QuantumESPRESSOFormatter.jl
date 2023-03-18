@@ -1,5 +1,6 @@
 module QuantumESPRESSOFormatter
 
-include("Inputs/Inputs.jl")
+include("input.jl")
+include("PWscf.jl")
 
 end
