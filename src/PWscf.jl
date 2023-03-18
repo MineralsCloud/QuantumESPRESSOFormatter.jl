@@ -2,7 +2,7 @@ module PWscf
 
 using Crystallography: ReciprocalPoint, MonkhorstPackGrid
 using Formatting: sprintf1
-using QuantumESPRESSOBase.Inputs.PWscf:
+using QuantumESPRESSOBase.PWscf:
     AtomicSpecies,
     AtomicPosition,
     ReciprocalPoint,
@@ -15,7 +15,7 @@ using QuantumESPRESSOBase.Inputs.PWscf:
     KMeshCard,
     PWInput,
     optionof
-using QuantumESPRESSOParser.Inputs.PWscf
+using QuantumESPRESSOParser.PWscf
 
 import AbInitioSoftwareBase.Inputs: FormatConfig
 
