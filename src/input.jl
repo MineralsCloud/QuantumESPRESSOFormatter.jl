@@ -1,8 +1,6 @@
-module Inputs
-
 using IterTools: imap
 using PyFortran90Namelists: fstring
-using QuantumESPRESSOBase.Inputs: QuantumESPRESSOInput, dropdefault, groupname
+using QuantumESPRESSOBase: QuantumESPRESSOInput, dropdefault, groupname
 
 import AbInitioSoftwareBase.Inputs: FormatConfig, Namelist
 
@@ -46,5 +44,3 @@ function Base.print(io::IO, nml::Namelist)
 end
 
 include("PWscf.jl")
-
-end
