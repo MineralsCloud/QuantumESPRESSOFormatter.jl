@@ -96,7 +96,7 @@ function Base.print(io::IO, card::CellParametersCard)
         join(
             (
                 "CELL_PARAMETERS { $(getoption(card)) }",
-                map(eachrow(card.data)) do row
+                Iterators.map(eachrow(card.data)) do row
                     join((sprintf1(config.float, x) for x in row))
                 end...,
             ),
@@ -108,7 +108,7 @@ end
 function Base.print(io::IO, data::MonkhorstPackGrid)
     config = FormatConfig(data)
     print(io, config.indent * join(
-        map([data.mesh; data.is_shift]) do x
+        Iterators.map([data.mesh; data.is_shift]) do x
             sprintf1(config.int, x)
         end,
         config.delimiter,
@@ -120,7 +120,7 @@ function Base.print(io::IO, data::ReciprocalPoint)
     print(
         io,
         config.indent * join(
-            map(x -> sprintf1(config.float, x), [data.coord..., data.weight]),
+            Iterators.map(x -> sprintf1(config.float, x), [data.coord..., data.weight]),
             config.delimiter,
         ),
     )
