@@ -14,7 +14,7 @@ using QuantumESPRESSOBase.PWscf:
     GammaPointCard,
     KMeshCard,
     PWInput,
-    optionof
+    getoption
 using QuantumESPRESSOParser.PWscf
 
 import AbInitioSoftwareBase.Inputs: FormatConfig
@@ -83,7 +83,7 @@ function Base.print(io::IO, card::AtomicPositionsCard)
     print(
         io,
         join(
-            ("ATOMIC_POSITIONS { $(optionof(card)) }", map(string, card.data)...),
+            ("ATOMIC_POSITIONS { $(getoption(card)) }", map(string, card.data)...),
             config.newline,
         ),
     )
@@ -95,7 +95,7 @@ function Base.print(io::IO, card::CellParametersCard)
         io,
         join(
             (
-                "CELL_PARAMETERS { $(optionof(card)) }",
+                "CELL_PARAMETERS { $(getoption(card)) }",
                 map(eachrow(card.data)) do row
                     join((sprintf1(config.float, x) for x in row))
                 end...,
@@ -128,18 +128,18 @@ function Base.print(io::IO, data::ReciprocalPoint)
 end
 function Base.print(io::IO, card::SpecialPointsCard)
     config = FormatConfig(card)
-    content = "K_POINTS { $(optionof(card)) }" * config.newline
+    content = "K_POINTS { $(getoption(card)) }" * config.newline
     print(io, join((content, length(card.data), map(string, card.data)...), config.newline))
     return nothing
 end
 function Base.print(io::IO, card::GammaPointCard)
     config = FormatConfig(card)
-    print(io, "K_POINTS { $(optionof(card)) }" * config.newline)
+    print(io, "K_POINTS { $(getoption(card)) }" * config.newline)
     return nothing
 end
 function Base.print(io::IO, card::KMeshCard)
     config = FormatConfig(card)
-    content = "K_POINTS { $(optionof(card)) }" * config.newline
+    content = "K_POINTS { $(getoption(card)) }" * config.newline
     print(io, content * string(card.data))
     return nothing
 end
