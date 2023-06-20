@@ -17,7 +17,7 @@ using QuantumESPRESSOBase.PWscf:
     getoption
 using QuantumESPRESSOParser.PWscf
 
-import AbInitioSoftwareBase.Inputs: FormatConfig
+import AbInitioSoftwareBase: FormatConfig
 
 export format_file, format_text
 

@@ -2,7 +2,7 @@ using IterTools: imap
 using PyFortran90Namelists: fstring
 using QuantumESPRESSOBase: QuantumESPRESSOInput, dropdefault, groupname
 
-import AbInitioSoftwareBase.Inputs: FormatConfig, Namelist
+import AbInitioSoftwareBase: FormatConfig, Namelist
 
 FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
     delimiter=" ", newline="\n", indent=' '^4, float="%f", int="%i", bool=".%."
