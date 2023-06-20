@@ -107,12 +107,15 @@ function Base.print(io::IO, card::CellParametersCard)
 end
 function Base.print(io::IO, data::MonkhorstPackGrid)
     config = FormatConfig(data)
-    print(io, config.indent * join(
-        Iterators.map([data.mesh; data.is_shift]) do x
-            sprintf1(config.int, x)
-        end,
-        config.delimiter,
-    ))
+    print(
+        io,
+        config.indent * join(
+            Iterators.map([data.mesh; data.is_shift]) do x
+                sprintf1(config.int, x)
+            end,
+            config.delimiter,
+        ),
+    )
     return nothing
 end
 function Base.print(io::IO, data::ReciprocalPoint)
