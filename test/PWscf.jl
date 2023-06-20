@@ -2,9 +2,9 @@ module PWscf
 
 using StructArrays: StructArray
 using Test
-using QuantumESPRESSOBase.Inputs.PWscf:
+using QuantumESPRESSOBase.PWscf:
     AtomicSpecies, AtomicPosition, AtomicSpeciesCard, AtomicPositionsCard
-using QuantumESPRESSOFormatter.Inputs.PWscf: format_text, format_file
+using QuantumESPRESSOFormatter.PWscf: format_text, format_file
 
 @testset "Test constructing `AtomicSpeciesCard`" begin
     a = ["Al", "As"]
