@@ -5,7 +5,7 @@ version = "0.3.9"
 
 [deps]
 AbInitioSoftwareBase = "df5135bc-470e-46c6-b451-292e27ca5b84"
-Crystallography = "3bff3928-7a76-11e9-2089-d112443085a5"
+CrystallographyBase = "93b1d1cd-a8ea-4aa5-adb1-b2407ea0ba8d"
 Formatting = "59287772-0a20-5a39-b81b-1366585eb4c0"
 IterTools = "c8e1da08-722c-5040-9ed9-7db0dc04731e"
 PyFortran90Namelists = "e44308e6-bd5b-11e9-2850-49daf8f1ec40"
@@ -14,7 +14,6 @@ QuantumESPRESSOParser = "a780ab42-b33a-11e9-16c1-a92d75b2a626"
 
 [compat]
 AbInitioSoftwareBase = "0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.10"
-Crystallography = "0.2, 0.3, 0.4, 0.5, 0.6"
 Formatting = "0.3.3, 0.4"
 IterTools = "1"
 PyFortran90Namelists = "0.1"
