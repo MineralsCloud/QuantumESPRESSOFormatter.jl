@@ -1,11 +1,11 @@
 module PWscf
 
-using Crystallography: ReciprocalPoint, MonkhorstPackGrid
+using CrystallographyBase: MonkhorstPackGrid
 using Formatting: sprintf1
 using QuantumESPRESSOBase.PWscf:
+    SpecialPoint,
     AtomicSpecies,
     AtomicPosition,
-    ReciprocalPoint,
     AtomicSpeciesCard,
     AtomicPositionsCard,
     CellParametersCard,
@@ -25,7 +25,7 @@ FormatConfig(
     ::Union{
         AtomicSpecies,
         AtomicPosition,
-        ReciprocalPoint,
+        SpecialPoint,
         AtomicSpeciesCard,
         AtomicPositionsCard,
         CellParametersCard,
@@ -118,7 +118,7 @@ function Base.print(io::IO, data::MonkhorstPackGrid)
     )
     return nothing
 end
-function Base.print(io::IO, data::ReciprocalPoint)
+function Base.print(io::IO, data::SpecialPoint)
     config = FormatConfig(data)
     print(
         io,
