@@ -1,8 +1,11 @@
+using InteractiveUtils: edit
 using IterTools: imap
 using PyFortran90Namelists: fstring
 using QuantumESPRESSOBase: QuantumESPRESSOInput, dropdefault, groupname
 
 import AbInitioSoftwareBase: FormatConfig, Namelist
+
+export modify
 
 FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
     delimiter=" ", newline="\n", indent=' '^4, float="%f", int="%i", bool=".%."
@@ -41,4 +44,13 @@ function Base.print(io::IO, nml::Namelist)
     content = join(iter, newline)
     print(io, join(filter(!isempty, ("&" * groupname(nml), content, '/')), newline))
     return nothing
+end
+
+function modify(input::QuantumESPRESSOInput)
+    path = mktemp()
+    open(path, "w") do io
+        print(io, input)
+    end
+    edit(path)
+    return parse(typeof(input), read(path, String))
 end
