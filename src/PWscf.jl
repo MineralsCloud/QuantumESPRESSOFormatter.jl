@@ -2,8 +2,8 @@ module PWscf
 
 using CrystallographyBase: MonkhorstPackGrid
 using Formatting: sprintf1
+using QuantumESPRESSOBase: SpecialPoint
 using QuantumESPRESSOBase.PWscf:
-    SpecialPoint,
     AtomicSpecies,
     AtomicPosition,
     AtomicSpeciesCard,
