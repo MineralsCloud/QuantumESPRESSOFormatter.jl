@@ -67,7 +67,7 @@ function Base.print(io::IO, data::AtomicPosition)
         (
             config.indent,
             sprintf1("%3s", data.atom),
-            map(x -> sprintf1(config.float, x), data.pos)...,
+            map(Base.Fix1(sprintf1, config.float), data.pos)...,
         ),
         config.delimiter,
     )
