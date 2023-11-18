@@ -123,7 +123,9 @@ function Base.print(io::IO, data::SpecialPoint)
     print(
         io,
         config.indent * join(
-            Iterators.map(x -> sprintf1(config.float, x), [data.coord..., data.weight]),
+            Iterators.map(
+                Base.Fix1(sprintf1, config.float), [data.coordinates..., data.weight]
+            ),
             config.delimiter,
         ),
     )
