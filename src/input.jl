@@ -4,8 +4,7 @@ using PyFortran90Namelists: fstring
 using QuantumESPRESSOBase: QuantumESPRESSOInput, dropdefault, groupname
 
 import AbInitioSoftwareBase: FormatConfig, Namelist
-
-export modify
+import InteractiveUtils: edit
 
 FormatConfig(::Union{QuantumESPRESSOInput,Namelist}) = FormatConfig(;
     delimiter=" ", newline="\n", indent=' '^4, float="%f", int="%i", bool=".%."
@@ -46,8 +45,8 @@ function Base.print(io::IO, nml::Namelist)
     return nothing
 end
 
-function modify(input::QuantumESPRESSOInput)
-    path = mktemp()
+function edit(input::QuantumESPRESSOInput)
+    path = first(mktemp(; cleanup=true))
     open(path, "w") do io
         print(io, input)
     end
